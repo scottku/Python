@@ -51,8 +51,145 @@ def string_oper(): # 문자열 연산
     print("처음부터 슬라이싱: ", str1[:3]) # 시작 경계를 생략 -> 처음부터
     print("마지막까지 슬라이싱: ", str1[3:len(str1)])
     print("마지막까지 슬라이싱: ", str1[3:]) # 끝 경계를 생략 -> 끝까지)
+    print("전체 슬라이싱: ", str1[:])  # 모두 생략 -> 전체 복제
+    # 슬라이싱 [시작 경계 : 끝 경계 : 간격]
+    print("간격을 2로 전체 슬라이싱: ", str1[::2]) # 처음부터 끝까지, 2 간격으로
+    print("거꾸로 슬라이싱: ", str1[::-1]) # 간격이 음수면 방향이 반대
+
+    # 연결(+) -> 산술연산이 아님에 유의
+    print(str1 + " Programming")
+    # 반복(*)
+    print(str1 * 3)
+
+    # 포함 여부 확인: in, not in
+    print("P" in str1)
+    print("P" not in str1)
+
+def transform_method():
+    """
+    대소문자 변환 관련 메서드들
+    """
+    s = "i like Python"
+    print("원본: ", s)
+    print("UPPER: ", s.upper()) # 모두 대문자
+    print("lower: ", s.lower()) # 모두 소문자
+    print("swapcase: ", s.swapcase()) # 대문자 <-> 소문자
+    print("Capitalize: ", s.capitalize()) # 문장의 첫 글자를 대문자로
+    print("Title: ", s.title()) # 기사 제목 형태로 : 각 단어의 첫 글자를 대문자로 변환
+
+    print("원본: ", s) # str 객체 immutable - 원본이 변경되지는 않는다.
+
+def search_method():
+    """
+    문자열 검색 관련 메서드 연습
+    """
+    s = "I Like Python, I Like Java Also"
+    print("원본: ", s)
+    print("Count: ", s.count("Like")) # 문자열 내 Like의 갯수
+    print("1st Find: ", s.find("Like")) # 문자열 내 Like의 인덱스
+    print("2nd Find: ", s.find("Like", 6)) # 6번 인덱스 이후의 Like의 인덱스
+    print("3rd Find: ", s.find("Like", 21)) # 21번 인덱스 이후의 Like의 인덱스 -> 검색 결과 없으면 -1 반환
+    
+    print("1st Index: ", s.index("Like")) # 문자열 내 Like의 인덱스
+    print("2nd Index: ", s.index("Like", 6)) # 6번 인덱스 이후 Like의 인덱스
+    # print("3nd Index: ", s.index("Like", 21)) # 검색 결과 없으면 ValueError
+    # 에러 발생시키는 메서드 사용시에는 미리 체크(방어 코딩)
+    if "Like" in s[21:]:
+        print("3rd Index: ", s.index("Like, 21"))
+
+    print("원본: ", s)
+    # 역방향 검색 : rfind, rindex
+    print("Rfind: ", s.rfind("Like"))
+    print("2nd Rfind: ", s.rfind("Like", 0, 17)) # 0 ~ 17 경계 사이에서 Like 검색
+    # rindex는 검색 결과 없을 때 ValueError 발생, 이 문제를 제외하면 rfind와 사용방법 동일
+
+    # 특정 문자열로 시작 or 끝나는가?
+    url = "http://www.naver.com"
+    surl = "https://www.naver.com"
+    ftp = "ftp://ftp.naver.com"
+
+    print("url이 http:// 로 시작? : ", url.startswith("http://"))
+    print("surl이 https:// 로 시작? : ", url.startswith("https://"))
+    # 검색시 시작 문자열을 여러 개 중 한개로 비교할 때
+    print("ftp가 http:// or https://로 시작?", ftp.startswith(("http://","https://")))
+    print("url이 http:// or https://로 시작?", url.startswith(("http://", "https://")))
+    print("url이 naver.com으로 끝나는가?", url.endswith("naver.com"))
+    # startswith, endswith로 검색 범위를 제한할 수 있다.
+
+    print("ftp의 6 ~ 20 영역이 ftp.으로 시작하는가?", ftp.startswith("ftp.", 6, 20)) # 6 ~ 20 경계 영역이 ftp.으로 시작하는가?
+
+def modify_replace_methods():
+    """
+    문자열 수정, 치환 관련 메서드들
+    """
+    s = "            Alice and the Heart Queen           "
+    print("Strip: [", s.strip(), "]", sep="")   # 양쪽의 공백문자 제거
+    print("LStrip: [", s.lstrip(), "]", sep="") # 왼쪽의 공백문자 제거
+    print("RStrip: [", s.rstrip(), "]", sep="") # 오른쪽의 공백문자 제거
+
+    # 기본적으로 Strip은 공백문자로 제거, -> 임의의 문자열을 제거 가능
+    s = "-------------------Alice and the Heart Queen-------"
+    print("Strip -: [", s.strip("-"),"]", sep="") # 양쪽의 - 문자 제거
+
+    s = "I Love Java"
+    print("원본 : ", s)
+    print("Replace: ", s.replace("Java", "Python")) # Java -> Python 치환
+    print("원본 : ", s) # 원본은 변경되지 않는다.
+
+def split_join_methods():
+    """
+    분할과 합치기 메서드
+    """
+    s = "Ham and Cheese and Breads and Ketchup"
+    print("원본: ", s)
+    print("Split: ", s.split()) # 기본적으로 공백문자를 기준으로 분리
+    print("Split: ", s.split(" and ")) # 분할시 " and "를 기준으로 분리
+
+    items = s.split(" and ", 2) # " and " 구분자를 기준으로 앞으로부터 2개만 추출
+    print(items)
+    items = s.rsplit(" and ", 2) # " and " 구분자를 기준으로 뒤에서 2개만 추출
+    print(items)
+
+    lines = """
+JAVA Programming
+Python Programming
+Oracle Database
+    """
+    print(lines.split()) # 공백문자(space, \n, \t) 기준 분할
+    print(lines.splitlines()) # 기본적으로는 개행 문자를 유지하지 않는다.
+    print(lines.splitlines(True)) # 개행 문자를 삭제하지 않고 유진
+
+def check_method(): # 판별 관련 -> is 계열 (boolean 반환)
+    print("1234567890".isdigit()) # 문자열이 숫자만 포함하고 있는가?
+    print("abcdefghijkl".isalpha()) # 문자열이 알파벳만 포함하고 있는가?
+    print("Python3".isalnum()) # 문자열이 알파벳+숫자만 포함하고 있는가?
+    print("Python 3".isalnum()) # 공백 문자로 인해 alnum 위배
+    print(" \r\n\t".isspace()) # 공백 문자만 포함하는가?
+    print("".isspace())
+
+    print("PYTHON".isupper()) # 전부 대문자인가?
+    print("python".islower()) # 전부 소문자인가?
+    print("Python Programming".istitle()) # 문자열이 title 형태인가?
+
+def align_methods():
+    """ 문자열 정렬 메서드 """
+
+    s = "Alice and the Heart Queen"
+    print("Center: [", s.center(60),"]", sep="") # 출력을 위한 60자리 확보 후 가운데 정렬
+    print("Center: [", s.center(60, "*"), "]", sep="") # 빈 자리를 *로 채운다
+    print("LJust: [", s.ljust(60, "*"), "]", sep="") # 왼족 정렬, 빈 자리는 *로 채운다
+    print("RJust: [", s.rjust(60, "*"), "]", sep="") # 오른쪽 정렬, 빈 자리는 *로 채운다
+
+    print("ZFill: ", "1234".zfill(5)) # 5자리를 확보, 내용을 채운 후 빈 자리는 0으로 채운다
+    print("ZFill: ", "1234567890".zfill(5)) # 확보한 자리는 최소 공간, 자리수가 넘어가도 내용은 잘리지 않음
     
 
 if __name__ == "__main__":
     # define_str()
-    string_oper()
+    # string_oper()
+    # transform_method()
+    # search_method()
+    # modify_replace_methods()
+    # split_join_methods()
+    # check_method()
+    align_methods()
