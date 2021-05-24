@@ -52,6 +52,7 @@ def raise_exception():
 
     print("End of code")
 
+
 if __name__ == "__main__":
     # handling_exception()
     raise_exception()
