@@ -2,7 +2,7 @@ def if_statement():
     """ if문 연습 """
     # 금액을 입력 받고 10000원 이상이면 by taxi
     # 1000원 이상이면 by bus
-    # 이 미만이면 on foot을 출력
+    # 1000원 미만이면 on foot을 출력
 
     money = int(input("돈 얼마나 가지고 있어?"))
 
@@ -63,10 +63,20 @@ def for_ex():
 
 def while_ex():
     """ while문 연습 """
-    i = 1
-    j = 1
+    row = 1
+    while row <= 5:
+        col = 1
+        while row >= col:
+            col += 1
+        print("*" * (col-1)+"\n")
+        row += 1
+
+
+
+
 
 if __name__ == "__main__":
     # if_statement()
     # cond_expr()
-    for_ex()
+    # for_ex()
+    while_ex()
