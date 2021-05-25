@@ -96,3 +96,14 @@ def clean_string(strings, *funcs):
 
 cleaned = clean_string(dirty_strings, str.strip, str.title) # 좌우 공백 제거, 맨 앞글자 대문자 형식
 print("CLEANED: ", cleaned)
+
+
+# __name__ 속성
+#   import 될 때 -> 자신의 이름
+#   직접 실행될 때 -> __main__
+print("__name__: ", __name__)
+
+if __name__ == "__main__":
+    print("최상위 모듈로 실행되었습니다.")
+else:
+    print("import 된 모듈입니다.")
