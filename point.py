@@ -39,6 +39,7 @@ class Point:
         if isinstance(other, Point):    # + Point
             self.x += other.x
             self.y += other.y
+            # return Point(self.x + other.x, self.y + other.y) -> 아예 새로운 객체 반환
         elif isinstance(other, int):    # + int
             self.x += other
             self.y += other
