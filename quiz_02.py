@@ -22,14 +22,18 @@ def quiz_03():
         str1 = input("알파벳을 입력해 주세요: ")
         if str1 == "q":
             break
-        elif str1 == "d" or "w":
+        if str1 != "d" and str1 != "w":
+            print("?")
+            continue
+        if str1 == "d" or "w":
             money = input("금액을 입력해 주세요: ")
             if str1 == "d":
                 balance += int(money)
                 print("Amount: ", money, "\n", "Balance: ", balance)
-            else:
+            elif str1 == "w":
                 balance -= int(money)
                 print("Amount: ", money, "\n", "Balance: ", balance)
+
 
 
 

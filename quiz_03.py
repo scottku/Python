@@ -10,8 +10,11 @@ def quiz_01():
             break
     total = 0
     for i in range(0, y+1):
-        if i%3 == 0:
+        if i % 3 == 0:
             total += i
+    """ lst = [i for i in range(1, to + 1) if i % 3 == 0]
+        total = sum(lst) """
+
     print("1부터 ", y, "까지 3의 배수의 합 = ", total)
 
 def quiz_02():

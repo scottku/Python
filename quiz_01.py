@@ -1,6 +1,6 @@
 def quiz_01():
     str1 = "Life is too short, you need Python"
-    lst = list(str1.lower())
+    lst = list(str1.lower().replace(",", "").replace(" ", ""))
     chars = set(lst)
     print(chars)
     lst = list(chars)
@@ -15,15 +15,15 @@ def quiz_02():
     print(lst)
 
 def quiz_03():
-    students = [{"name":"Kim", "kor":80, "eng":90, "math":80},
-    {"name":"Lee", "kor":90, "eng":85, "math":85}]
+    students = [{"name": "Kim", "kor": 80, "eng": 90, "math": 80},
+    {"name": "Lee", "kor": 90, "eng": 85, "math": 85}]
     total1 = 0
 
     print(list(students[0].values()))
     lst1 = list(students[0].values())
     print(list(students[1].values()))
     lst2 = list(students[1].values())
-    for i in range (1,4):
+    for i in range(1, 4):
         total1 += lst1[i]
         print(total1)
     students[0]["total"] = total1
@@ -32,7 +32,7 @@ def quiz_03():
 
     total2 = 0
 
-    for i in range (1,4):
+    for i in range(1, 4):
         total2 += lst2[i]
 
     students[1]["total"] = total2
