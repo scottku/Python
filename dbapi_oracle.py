@@ -6,7 +6,7 @@ def create_connection():
                             1521,
                             "xe")   # 서버주소, 포트, SID(서비스명)
     # 접속
-    db = cx_Oracle.connect("hr", "hr", dsn) # 계정, 암호, 데이터소스이름
+    db = cx_Oracle.connect("system", "oracle", dsn) # 계정, 암호, 데이터소스이름
     return db
 def test_connect():
     # 접속
